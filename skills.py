@@ -12,6 +12,7 @@ This assessment is DUE TO YOUR ADVISOR BY SUNDAY EVENING.
 
 from __future__ import division
 
+
 def all_odd(number_list):
     """Return a list of only the odd numbers in the input list.
 
@@ -23,13 +24,13 @@ def all_odd(number_list):
 
     """
 
-    all_odd_list = []
+    only_odd = []
 
     for number in number_list:
-        if number % 2 !=0: 
-            all_odd_list.append(number)
+        if number % 2 == 1:
+            only_odd.append(number)
 
-    return all_odd_list
+    return only_odd
 
 
 def all_even(number_list):
@@ -43,13 +44,13 @@ def all_even(number_list):
 
     """
 
-    all_even_list = []
+    only_even = []
 
     for number in number_list:
-        if number % 2 == 0: 
-            all_even_list.append(number)
+        if number % 2 == 0:
+            only_even.append(number)
 
-    return all_even_list
+    return only_even
 
 
 def print_indeces(my_list):
@@ -71,8 +72,9 @@ def print_indeces(my_list):
 
     """
 
-    for item in my_list:
-        print my_list.index(item), item
+    for index, item in enumerate(my_list):
+        print index, item
+
 
 def long_words(word_list):
     """Return all words in input list that are longer than 4 characters.
@@ -84,13 +86,14 @@ def long_words(word_list):
         []
 
     """
-    longer_than_four = []
-    
+
+    long_words_lst = []
+
     for word in word_list:
         if len(word) > 4:
-            longer_than_four.append(word) 
+            long_words_lst.append(word)
 
-    return longer_than_four
+    return long_words_lst
 
 
 def smallest_int(number_list):
@@ -106,15 +109,16 @@ def smallest_int(number_list):
 
     """
 
-
     if not number_list:
         return None
-    else:
-        smallest_int_list = [number_list[0]]
-        for number in number_list:
-            if number < smallest_int_list[0]:
-                smallest_int_list[0] = number
-        return smallest_int_list[0]
+
+    smallest = number_list[0]
+
+    for number in number_list:
+        if number < smallest:
+            smallest = number
+
+    return smallest
 
 
 def largest_int(number_list):
@@ -129,14 +133,16 @@ def largest_int(number_list):
         True
 
     """
+
     if not number_list:
         return None
-    else:
-        largest_int_list = [number_list[0]]
-        for number in number_list:
-            if number > largest_int_list[0]:
-                largest_int_list[0] = number
-        return largest_int_list[0]
+
+    largest = number_list[0]
+    for number in number_list:
+        if number > largest:
+            largest = number
+
+    return largest
 
 
 def halvesies(number_list):
@@ -152,12 +158,12 @@ def halvesies(number_list):
 
     """
 
-    half_list = []
+    halfs = []
 
     for number in number_list:
-        half_list.append(float(number)/2)
+        halfs.append(float(number) / 2)
 
-    return half_list
+    return halfs
 
 
 def word_lengths(word_list):
@@ -168,12 +174,12 @@ def word_lengths(word_list):
 
     """
 
-    word_lengths_list = []
+    lengths = []
 
     for word in word_list:
-        word_lengths_list.append(len(word))
+        lengths.append(len(word))
 
-    return word_lengths_list
+    return lengths
 
 
 def sum_numbers(number_list):
@@ -191,12 +197,13 @@ def sum_numbers(number_list):
         0
 
     """
-    number_list_sum = 0
+
+    numbers_sum = 0
 
     for number in number_list:
-        number_list_sum +=number
+        numbers_sum += number
 
-    return number_list_sum
+    return numbers_sum
 
 
 def mult_numbers(number_list):
@@ -218,12 +225,12 @@ def mult_numbers(number_list):
 
     """
 
-    number_list_mult = 1
+    product = 1
 
     for number in number_list:
-            number_list_mult = number * number_list_mult
+        product = number * product
 
-    return number_list_mult
+    return product
 
 
 def join_strings(word_list):
@@ -242,12 +249,12 @@ def join_strings(word_list):
 
     """
 
-    joined_word_list = ""
+    joined_string = ''
 
     for word in word_list:
-        joined_word_list += word
+        joined_string += word
 
-    return joined_word_list
+    return joined_string
 
 
 def average(number_list):
@@ -262,17 +269,17 @@ def average(number_list):
         >>> average([]) is None
         True
     """
+
     if not number_list:
         return None
-    else:
-        sum_number_list = 0
 
-        for number in number_list:
-            sum_number_list += number
+    sum_numbers = 0
+    for number in number_list:
+        sum_numbers += number
 
-        average_number = sum_number_list / len(number_list)
+    average = float(sum_numbers) / len(number_list)
 
-        return average_number
+    return average
 
 
 ##############################################################################
@@ -294,15 +301,12 @@ def advanced_join_strings(list_of_words):
 
     """
 
-    if not list_of_words:
-        return None
-    elif len(list_of_words) == 1:
-        return list_of_words[0]
-    else:
-        more_joined_string = list_of_words[0]
-        for i in range(len(list_of_words)-1):
-            more_joined_string = more_joined_string + ", " + list_of_words[i+1]
-        return more_joined_string
+    joined_string = list_of_words[0]
+
+    for word in list_of_words[1:]:
+        joined_string = joined_string + ', ' + word
+
+    return joined_string
 
 
 ##############################################################################
